@@ -48,8 +48,7 @@ class GeneratePyCodeChain(LLMChain):
         llm = ChatOpenAI(model_name="gpt-4",
                          temperature=0.35,
                          request_timeout=240)
-        chain_instance = cls(prompt=prompt, llm=llm)
-        return chain_instance
+        return cls(prompt=prompt, llm=llm)
 
 
 class PyCodeAGI(Chain, BaseModel):
@@ -79,7 +78,7 @@ class PyCodeAGI(Chain, BaseModel):
             f.write(f"Objective: \n {objective.strip()}\n\n")
 
         print("\033[93m" + "*****DESCRIPTION*****" + "\033[0m")
-        instructions = f"Users will interact with the web app built using Streamlit and Python."
+        instructions = "Users will interact with the web app built using Streamlit and Python."
         tasks = f"""            
             Create a concise description for the Python app: {objective}\n
             Use your expertise to envision the app's purpose and functionality.
@@ -227,7 +226,7 @@ if __name__ == "__main__":
     print("\nA simple agent that builds a Python app for you!\n")
     print("The agent will use Streamlit to turn your Python app into a web app!\n")
     print(u'\u2193' + " Lets get started " + u'\u2193' + "\n")
-    objective = input(f"What app do you want me to build: ")
+    objective = input("What app do you want me to build: ")
 
     # Initialize our agent
     pycode_agi = PyCodeAGI.create_llm_chain()

@@ -30,8 +30,7 @@ class GeneratePyCodeChain(LLMChain):
         llm = OpenAI(model_name="text-davinci-003",
                      temperature=0.3)
 
-        chain_instance = cls(prompt=prompt, llm=llm)
-        return chain_instance
+        return cls(prompt=prompt, llm=llm)
 
 
 class PyCodeAGI(Chain, BaseModel):
